@@ -15,7 +15,7 @@ const Home = () => {
   ];
   return (
     <div>
-      {cats.mpa((cat) => (
+      {cats.map((cat) => (
         <Link
           key={cat.id}
           to={{
