@@ -1,18 +1,39 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { createContext, useState } from "react";
 import "./App.css";
-import Home from "./Home";
-import Details from "./Details";
+import AddCityButton from "./AddCityButton";
+import CityList from "./CityList";
+import TemperatureAverage from "./TemperatureAverage";
 
-// important! first install recat-router-dom
+const WeatherContext = createContext({
+  cities: [],
+  addCity: (name, temperature) => {},
+});
+
+export { WeatherContext };
 
 function App() {
+  const [cities, setCities] = useState([]);
+
+  const addCity = (name, temperature) => {
+    setCities((prevCities) => [...prevCities, { name, temperature }]);
+  };
+
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/details/:id" component={Details} />
-      </Switch>
-    </BrowserRouter>
+    <WeatherContext.Provider
+      value={{
+        cities,
+        addCity,
+      }}
+    >
+      <div className="app">
+        <div className="city-overview">
+          <h2>Weather App for cities</h2>
+          <CityList />
+          <AddCityButton />
+          <TemperatureAverage />
+        </div>
+      </div>
+    </WeatherContext.Provider>
   );
 }
 
