@@ -17,7 +17,7 @@ const AddCityButton = () => {
     const encodedName = encodeURIComponent(name);
     //fetch datat from openweather map api
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${encodedName}&units=${unit}&mode=${mode}&appid=b731c9b0681063c7aeb821af56a17408`
+      `https://api.openweathermap.org/data/2.5/weather?q=${encodedName}&units=${unit}&mode=${mode}&appid=b731c9b0681063c7aeb821af56a17408`
     )
       .then((response) => response.json())
       .then((data) => {
