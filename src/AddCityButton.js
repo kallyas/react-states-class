@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { WeatherContext } from "./App";
+import { WeatherContext } from "./Weather";
 
 const AddCityButton = () => {
   const [name, setName] = useState("");
@@ -21,7 +21,6 @@ const AddCityButton = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         addCity(name, data.main.temp);
         setName("");
         setError("");

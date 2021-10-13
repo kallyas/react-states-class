@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { WeatherContext } from "./App";
+import { WeatherContext } from "./Weather";
 
 const CityList = () => {
   const { cities } = useContext(WeatherContext);
